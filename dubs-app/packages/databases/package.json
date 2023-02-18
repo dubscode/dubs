@@ -1,0 +1,17 @@
+{
+  "name": "@dubs-app/databases",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "sst bind 'vitest'",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.110",
+    "@types/node": "^18.13.0"
+  },
+  "dependencies": {
+    "sst": "^2.0.13",
+    "ulid": "^2.3.0"
+  }
+}

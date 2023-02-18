@@ -1,0 +1,8 @@
+{
+  "singleQuote": true,
+  "tailwindConfig": "./tailwind.config.cjs",
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "pluginSearchDirs": false
+}

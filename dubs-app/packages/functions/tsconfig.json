@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@dubs-app/core/*": ["../core/src/*"],
+      "@dubs-app/databases/*": ["../databases/src/*"],
+      "@dubs-app/frontend/*": ["../frontend/src/*"]
+    }
+  }
+}

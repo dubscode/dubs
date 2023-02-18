@@ -1,0 +1,24 @@
+type Mutation {
+  createUser(email: String!, firstName: String, handle: String, lastName: String, picture: String): User
+  destroyUser(id: String!): Int
+  updateUser(email: String, firstName: String, handle: String, id: String!, lastName: String, picture: String): User
+}
+
+type Query {
+  currentUser: User
+  user(id: String!): User
+  users: [User!]
+}
+
+"""User record from the Postgres database."""
+type User {
+  createdAt: String
+  email: String
+  firstName: String
+  handle: String
+  id: ID
+  lastName: String
+  name: String
+  picture: String
+  updatedAt: String
+}

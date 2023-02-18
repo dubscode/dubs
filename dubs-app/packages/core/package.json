@@ -1,0 +1,17 @@
+{
+  "name": "@dubs-app/core",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "sst bind vitest",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "vitest": "^0.28.4"
+  },
+  "dependencies": {
+    "gravatar-url": "^4.0.1",
+    "sst": "^2.0.13"
+  }
+}

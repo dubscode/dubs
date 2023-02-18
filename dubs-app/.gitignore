@@ -1,0 +1,13 @@
+# dependencies
+node_modules
+
+# sst
+.sst
+.build
+cdk.context.json
+
+# misc
+.DS_Store
+
+# local env files
+.env*.local

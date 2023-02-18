@@ -1,0 +1,27 @@
+query CurrentUser {
+  currentUser {
+    createdAt
+    email
+    firstName
+    handle
+    id
+    lastName
+    name
+    picture
+    updatedAt
+  }
+}
+
+query GetUsers {
+  users {
+    createdAt
+    email
+    firstName
+    handle
+    id
+    lastName
+    name
+    picture
+    updatedAt
+  }
+}

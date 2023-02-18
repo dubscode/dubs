@@ -1,0 +1,46 @@
+{
+  "name": "@dubs-app/frontend",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "sst env \"vite\"",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
+    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
+    "test-storybook": "NODE_OPTIONS=--openssl-legacy-provider test-storybook --watch"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.7",
+    "clsx": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sst": "^2.0.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-vite": "^0.4.2",
+    "@storybook/react": "^6.5.16",
+    "@storybook/test-runner": "^0.9.4",
+    "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^8.3.0",
+    "hex-rgb": "^5.0.0",
+    "jsdom": "^21.1.0",
+    "postcss": "^8.4.21",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}

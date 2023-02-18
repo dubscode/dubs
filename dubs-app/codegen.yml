@@ -1,0 +1,50 @@
+overwrite: true
+errorsOnly: true
+schema: 'graphql-output/schema.graphql'
+documents: 'packages/frontend/src/**/*.graphql'
+generates:
+  packages/core/src/types/gql.generated.ts:
+    config:
+      useIndexSignature: true
+      inputMaybeValue: 'T | undefined'
+      avoidOptionals:
+        default: true
+        input: true
+      namingConvention:
+        enumValues: keep
+    plugins:
+      - typescript
+      - typescript-resolvers
+  packages/frontend/src/test/mocks/generated-mocks.ts:
+    plugins:
+      - add:
+          content:
+            - '/* eslint-disable @typescript-eslint/no-use-before-define,@typescript-eslint/no-unused-vars,no-prototype-builtins */'
+            - "import { faker } from '@faker-js/faker';"
+      - typescript-mock-data:
+          typesFile: '@dubs-app/core/types/gql.generated.ts'
+          enumValues: upper-case#upperCase
+          typeNames: keep
+          fieldGeneration:
+            _all:
+              id: 'faker.datatype.uuid()'
+              createdAt: 'new Date().toISOString()'
+              updatedAt: 'new Date().toISOString()'
+              email: 'faker.internet.email()'
+            User:
+              firstName: 'faker.name.firstName()'
+              lastName: 'faker.name.lastName()'
+              handle: 'faker.internet.userName()'
+              picture: 'faker.image.avatar()'
+  packages/frontend/src/:
+    preset: near-operation-file
+    presetConfig:
+      extension: '.gql.ts'
+      folder: '_gen_'
+      baseTypesPath: '~@dubs-app/core/src/types/gql.generated'
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - typescript-operations
+      - typescript-react-apollo
+      - named-operations-object
