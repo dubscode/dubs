@@ -23,7 +23,7 @@ generates:
             - "import { faker } from '@faker-js/faker';"
       - typescript-mock-data:
           typesFile: '@dubs-app/core/types/gql.generated.ts'
-          enumValues: upper-case#upperCase
+          enumValues: keep
           typeNames: keep
           fieldGeneration:
             _all:

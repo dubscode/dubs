@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "gravatar-url": "^4.0.1",
-    "sst": "^2.0.13"
+    "sst": "2.1.24"
   }
 }

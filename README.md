@@ -55,6 +55,7 @@ This env file will be shared by both dubs-base and dubs-app.
 
 - App
   - Implement the Hygen templates, and allow for complicated model attributes
+  - Implement Hygen templates for the frontend (like Storybook)
 - Auth
   - Create tests for the auth system
 - Frontend
@@ -110,8 +111,8 @@ To run the storybook test suite, you need to run the storybook server locally.
 
 ```shell
 # Run the tests from the root folder of frontend
-npm run storybook
-npm run test-storybook
+npm run sb
+npm run test-sb
 ```
 
 ## Contributing
