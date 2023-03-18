@@ -47,7 +47,7 @@ const sendEmailNotification = async ({
       attachments,
     };
     const sendResult = await transporter.sendMail(params);
-    console.log(`sendResult | ${subject}`, sendResult);
+
     return sendResult;
   } catch (error) {
     console.log(`Error sendResult | ${subject}`, JSON.stringify(error));
@@ -101,8 +101,8 @@ export const handler = AuthHandler({
         const { user, created } = await UserModel.findOrCreate({ email });
 
         const redirect = created
-          ? `${process.env.REDIRECT_URL}/welcome`
-          : `${process.env.REDIRECT_URL}`;
+          ? `${process.env.REDIRECT_URL}/dashboard?new=true`
+          : `${process.env.REDIRECT_URL}/dashboard`;
 
         return Session.cookie({
           redirect,

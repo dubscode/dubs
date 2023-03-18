@@ -10,6 +10,7 @@ module.exports = {
     builder: '@storybook/builder-vite',
   },
   features: {
+    interactionsDebugger: true,
     storyStoreV7: true,
   },
   webpackFinal: async (config) => {

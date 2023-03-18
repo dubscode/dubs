@@ -30,7 +30,7 @@ export interface UpdateUserInput {
 export const create = async (input: CreateUserInput) => {
   const name = fullName(input);
   const handle = await generateHandle(name);
-  const [result] = await Postgres.DB.insertInto(tableName)
+  return await Postgres.DB.insertInto(tableName)
     .values({
       ...input,
       email: sanitizeEmail(input.email),
@@ -38,8 +38,7 @@ export const create = async (input: CreateUserInput) => {
       picture: input.picture || gravatarUrl(input.email),
     })
     .returningAll()
-    .execute();
-  return result;
+    .executeTakeFirst();
 };
 
 export const destroy = async (id: string) => {
@@ -54,6 +53,7 @@ export const findOrCreate = async (input: CreateUserInput) => {
   const email = sanitizeEmail(input.email);
   const user = await getByEmail(email);
   if (user) return { user, created: false };
+
   const newUser = await create({ ...input, email });
   return { user: newUser, created: true };
 };
@@ -61,6 +61,7 @@ export const findOrCreate = async (input: CreateUserInput) => {
 export const fullName = (user: Partial<User> | Selectable<User>) => {
   const { firstName, lastName } = user;
   if (!firstName && !lastName) return 'New User';
+
   return `${firstName} ${lastName}`;
 };
 
@@ -99,7 +100,7 @@ export const getByHandle = async (handle: string) => {
 };
 
 export const list = async () => {
-  return Postgres.DB.selectFrom(tableName)
+  return await Postgres.DB.selectFrom(tableName)
     .selectAll()
     .orderBy('createdAt', 'desc')
     .execute();
@@ -108,7 +109,7 @@ export const list = async () => {
 const sanitizeEmail = (email: string) => email.toLowerCase().trim();
 
 export const update = async (id: string, input: UpdateUserInput) => {
-  const [result] = await Postgres.DB.updateTable(tableName)
+  return await Postgres.DB.updateTable(tableName)
     .set({
       ...input,
       ...(input.email &&
@@ -117,6 +118,5 @@ export const update = async (id: string, input: UpdateUserInput) => {
     })
     .where('id', '=', id)
     .returningAll()
-    .execute();
-  return result;
+    .executeTakeFirst();
 };

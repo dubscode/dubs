@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "sst dev",
+    "front": "cd packages/frontend && npm run dev",
     "build": "sst build",
     "deploy": "sst deploy",
     "remove": "sst remove",
@@ -31,7 +32,7 @@
     "graphql-codegen-typescript-mock-data": "^3.2.2",
     "jsdom": "^21.1.0",
     "prettier": "^2.8.4",
-    "sst": "^2.0.13",
+    "sst": "2.1.24",
     "typescript": "^4.9.5"
   },
   "workspaces": [
@@ -42,6 +43,7 @@
     "lodash": "^4.17.21"
   },
   "overrides": {
+    "postcss": "8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

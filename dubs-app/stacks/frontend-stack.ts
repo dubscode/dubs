@@ -10,7 +10,7 @@ export function FrontendStack({ stack }: StackContext) {
 
   const storybook = new StaticSite(stack, 'storybook-site', {
     dev: {
-      deploy: true,
+      deploy: false,
     },
     path: 'packages/frontend',
     buildOutput: 'storybook-static',
@@ -24,6 +24,14 @@ export function FrontendStack({ stack }: StackContext) {
       GRAPHQL_URL: graphqlUrl,
     },
   });
+
+  const storyUrl = storybook.customDomainUrl || storybook.url;
+
+  if (storyUrl) {
+    stack.addOutputs({
+      StorybookUrl: storyUrl,
+    });
+  }
 
   const frontend = new StaticSite(stack, 'frontend-site', {
     path: 'packages/frontend',
